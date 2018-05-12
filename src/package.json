@@ -1,0 +1,38 @@
+{
+  "name": "api-bir",
+  "version": "0.0.1",
+  "private": true,
+  "description": "New Swagger API Project",
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "crypto": "^1.0.1",
+    "express": "^4.12.3",
+    "helmet": "^3.9.0",
+    "http-status-codes": "^1.3.0",
+    "mongoose": "^4.13.8",
+    "pg": "^7.4.0",
+    "redis": "^2.8.0",
+    "sequelize": "^4.28.1",
+    "swagger-express-mw": "^0.1.0",
+    "swagger-ui-express": "^2.0.13",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "should": "^7.1.0",
+    "supertest": "^1.0.0",
+    "z-schema": "^3.12.0",
+    "request": "^2.58.0",
+    "chai": "^3.0.0",
+    "mocha": "^2.2.5",
+    "dotenv": "^1.2.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "start:local": "set CONFIGENV=local&&node app.js",
+    "test": "swagger project test"
+  }
+}
