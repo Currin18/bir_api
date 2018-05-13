@@ -36,7 +36,7 @@ paths:
           description: Success
           schema:
             # a pointer to a definition
-            $ref: "#/definitions/HelloWorldResponse"
+            $ref: "#/definitions/SuccessResponse"
         # responses may fall through to errors
         default:
           description: Error
@@ -45,9 +45,9 @@ paths:
   /user:
     x-swagger-router-controller: userController
     post:
-      description: Returns 'Hello' to the caller
+      description: Create user data
       # used as the method name of the controller
-      operationId: createUser
+      operationId: postUser
       consumes:
         - application/json
       parameters:
@@ -66,12 +66,32 @@ paths:
               password:
                 type: string
       responses:
-        "200":
+        "201":
           description: Success
           schema:
             # a pointer to a definition
-            $ref: "#/definitions/HelloWorldResponse"
+            $ref: "#/definitions/SuccessResponse"
         # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /user/{userCode}:
+    x-swagger-router-controller: userController
+    get:
+      description: Get user data
+      operationId: getUser
+      parameters:
+        - in: path
+          name: userCode
+          description: The user code.
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/UserResponse"
         default:
           description: Error
           schema:
@@ -80,7 +100,7 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  HelloWorldResponse:
+  SuccessResponse:
     required:
       - message
     properties:
@@ -92,3 +112,12 @@ definitions:
     properties:
       message:
         type: string
+  UserResponse:
+    required:
+      - message
+      - data
+    properties:
+      message:
+        type: string
+      data:
+        type: object
