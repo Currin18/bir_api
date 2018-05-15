@@ -87,11 +87,91 @@ paths:
           description: The user code.
           required: true
           type: string
+        - in: query
+          name: v
+          description: The version of the exam
+          required: false
+          type: integer
       responses:
         "200":
           description: Success
           schema:
             $ref: "#/definitions/UserResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /exam/{year}:
+    x-swagger-router-controller: examController
+    get:
+      description: Create exam data
+      operationId: getExamByYear
+      parameters:
+        - in: path
+          name: year
+          description: The year of the exam
+          required: true
+          type: integer
+        - in: query
+          name: v
+          description: The version of the exam
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/UserResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: Create exam data
+      operationId: postExam
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: year
+          description: The year of the exam
+          required: true
+          type: integer
+        - in: query
+          name: v
+          description: The version of the exam
+          required: false
+          type: integer
+        - in: body
+          name: questions
+          description: Data with the questions of the exam
+          required: true
+          schema:
+            items:
+              type: object
+              required:
+                - id
+                - statement
+              properties:
+                id:
+                  type: string
+                impugned:
+                  type: boolean
+                statement:
+                  type: string
+                answers:
+                  type: array
+                correctAnswer:
+                  type: integer
+                tags:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponse"
         default:
           description: Error
           schema:

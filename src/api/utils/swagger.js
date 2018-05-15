@@ -12,10 +12,12 @@ class swaggerUtils {
    */
   static parseEndpointPayload(req, payloadName) {
     const payload = req.swagger.params[payloadName].value;
+    console.log('payload ', payload);
     let payloadSchema;
     try {
       // get swagger schema
       payloadSchema = req.swagger.params[payloadName].schema.schema.properties;
+      console.log('payloadSchema ', payloadSchema);
     } catch (error) {
       // if can't get the swagger schema
       return payload;

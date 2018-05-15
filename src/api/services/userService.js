@@ -45,9 +45,12 @@ class userService {
     static async updateUser(userCode, data) {
         try {
             let user = await User.findOne({ userCode });
-            Object.assign(user, data);
-            console.log('user ', user);
-            return await user.save();
+            if (user) {
+                Object.assign(user, data);
+                console.log('user ', user);
+                return await user.save();
+            }
+            return null;
         } catch (error) {
             throw error;
         }

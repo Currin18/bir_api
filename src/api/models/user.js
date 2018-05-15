@@ -3,7 +3,7 @@ const config = require('../../config/config').mongoSchema;
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
     userCode: {
         type: String,
         required: true,
@@ -14,4 +14,4 @@ const userSchema = new Schema({
     salt: String,
 }, config);
 
-module.exports = mongoose.model('user', userSchema, 'user');
+module.exports = mongoose.model('user', UserSchema, 'user');
