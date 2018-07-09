@@ -33,6 +33,7 @@
   "scripts": {
     "start": "node app.js",
     "start:local": "set CONFIGENV=local&&node app.js",
+    "start:dev": "CONFIGENV=develop node app.js",
     "test": "swagger project test"
   }
 }

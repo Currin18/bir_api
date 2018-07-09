@@ -3,6 +3,8 @@ let config = {
   env: process.env.CONFIGENV || 'local',
 };
 
+console.log("env: ", config.env);
+
 const file = `../config/config-${config.env}`;
 const env = require(file);
 

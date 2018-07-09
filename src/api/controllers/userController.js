@@ -61,7 +61,7 @@ class userController {
         };
 
         try {
-            const response = await userService.createtUser(data);
+            const response = await userService.createUser(data);
             logger.debug({ type: 'MONGO', message: response })
             responseHelper.created(req, res);
         } catch (error) {
@@ -99,7 +99,7 @@ class userController {
         requestHelper.log(req, userCode);
 
         try {
-            
+
         } catch (error) {
             logger.error({ type: 'ERROR', message: error.message });
             responseHelper.error(req, res, 'Failed to delete user');

@@ -33,7 +33,7 @@ class userService {
      * Create user in database
      * @param  {Object}  data
      */
-    static async createtUser(data) {
+    static async createUser(data) {
         const user = new User(data);
         try {
             return await user.save();
